@@ -35,3 +35,8 @@ BUILD/*
 cmake*/*
 .idea/*
 mbed-os/*
+__pycache__/*
+mbed-os.lib
+mbed-nucleo-l412kb.lib
+
+
