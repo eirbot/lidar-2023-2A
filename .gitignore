@@ -34,3 +34,4 @@
 BUILD/*
 cmake*/*
 .idea/*
+mbed-os/*
