@@ -32,3 +32,11 @@
 *.app
 
 
+
+BUILD/*
+CMakeLists.txt
+mbed_config.h
+mbed_settings.py
+.idea/*
+mbed-os/*
+__pycache__/*
