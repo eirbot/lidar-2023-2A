@@ -32,11 +32,14 @@
 *.app
 
 BUILD/*
-cmake*/*
-.idea/*
+CMakeLists.txt
+mbed_config.h
+mbed_settings.py
+<.idea/*
 mbed-os/*
 __pycache__/*
-mbed-os.lib
-mbed-nucleo-l412kb.lib
+
+
+
 
 
