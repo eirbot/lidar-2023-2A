@@ -40,3 +40,5 @@ mbed_settings.py
 .idea/*
 mbed-os/*
 __pycache__/*
+cmake-build-debug/*
+.vscode/*
