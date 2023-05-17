@@ -1,37 +1,42 @@
 #include "mbed.h"
-#include "constantes.h"
- #include "Lidar.h"
+#include "tools.h"
+#include "LidarSerial.h"
+#include "usart.h"
+#include "dma.h"
 
 DigitalOut led(LED1);
-BufferedSerial lidarUART(TX_Lidar, RX_Lidar, LIDAR_BAUD_RATE);
+BufferedSerial lidarUART(TX_LIDAR, RX_LIDAR, LIDAR_BAUD_RATE);
+BufferedSerial pc(USBTX, USBRX);
 PwmOut pwm(PWM);
 DigitalOut avertissement(GPIO_Avertissement);
 DigitalOut danger(GPIO_Danger);
 
-Lidar lidar(&lidarUART, 300);
+//Lidar lidar(&lidarUART, &avertissement, &danger, &led, 300);
 
 /*
- * Utiliser printf pour envoyer à l'ordinateur des données à 115200 bauds/s
+ * Utiliser printf pour envoyer à l'ordinateur des données à 9600 bauds/s
  * Pour avoir un moniteur série facilement :
- * > mbed sterm -b 115200
+ * > mbed sterm
  */
 
-int main(){
-    // Setup
-    pwm.period_us(25); // 40kHz
-    pwm.write(0.66);
-    danger = 0;
-    led = 0;
+Thread lidarThread(osPriorityAboveNormal, OS_STACK_SIZE);
 
-    lidar.init();
-    ;
-    
-    // Loop
-    while(1){
-//        led = 1;
-//        ThisThread::sleep_for(1s);
-//        led = 0;
-//        ThisThread::sleep_for(1s);
-        lidar.position();
+
+
+int main() {
+    pwm.period_us(25); // 40kHz
+    pwm.write(1);
+    danger = 0;
+    led = 1;
+
+    lidarThread.start(lidarMain);
+
+//    //lidar.reset();
+//    lidar.init();
+    while (1) {
+//        lidar.adverse();
+//        ThisThread::sleep_for(100ms);
     }
+
+
 }
