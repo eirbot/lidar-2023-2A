@@ -31,11 +31,8 @@ int main() {
 
     lidarThread.start(lidarMain);
 
-//    //lidar.reset();
-//    lidar.init();
     while (1) {
-//        lidar.adverse();
-//        ThisThread::sleep_for(100ms);
+
     }
 
 

@@ -41,7 +41,7 @@ void MX_USART1_UART_Init(void)
 
     /* USER CODE END USART1_Init 1 */
     huart1.Instance = USART1;
-    huart1.Init.BaudRate = 230400;
+    huart1.Init.BaudRate = 115200;
     huart1.Init.WordLength = UART_WORDLENGTH_8B;
     huart1.Init.StopBits = UART_STOPBITS_1;
     huart1.Init.Parity = UART_PARITY_NONE;
@@ -62,6 +62,7 @@ void MX_USART1_UART_Init(void)
 
 void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 {
+
     GPIO_InitTypeDef GPIO_InitStruct = {0};
     RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
     if(uartHandle->Instance==USART1)
@@ -153,7 +154,7 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
         PA9     ------> USART1_TX
         PA10     ------> USART1_RX
         */
-        HAL_GPIO_DeInit(GPIOA, TX_LIDAR|RX_LIDAR);
+        HAL_GPIO_DeInit(GPIOA, TX_LIDAR_Pin|RX_LIDAR_Pin);
 
         /* USART1 DMA DeInit */
         HAL_DMA_DeInit(uartHandle->hdmarx);
